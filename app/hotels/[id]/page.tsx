@@ -2,9 +2,11 @@ import { MapPin, Star, CheckCircle, Wifi, Coffee, Tent, Waves } from 'lucide-rea
 import EnquiryForm from '@/components/EnquiryForm';
 import ImageGallery from '@/components/ImageGallery';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
 async function getHotel(id: string) {
     try {
-        const res = await fetch(`http://localhost:5000/api/hotels/${id}`, { cache: 'no-store' });
+        const res = await fetch(`${API_URL}/hotels/${id}`, { cache: 'no-store' });
         if (!res.ok) return null;
         return res.json();
     } catch (err) {

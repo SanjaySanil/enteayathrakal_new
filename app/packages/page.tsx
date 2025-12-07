@@ -1,10 +1,12 @@
 import PackageCard from '@/components/PackageCard';
 import FilterSidebar from '@/components/FilterSidebar';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
 async function getPackages(searchParams: any) {
     try {
         const params = new URLSearchParams(searchParams);
-        const res = await fetch(`http://localhost:5000/api/packages?${params.toString()}`, { cache: 'no-store' });
+        const res = await fetch(`${API_URL}/packages?${params.toString()}`, { cache: 'no-store' });
         if (!res.ok) {
             return [];
         }

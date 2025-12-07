@@ -1,10 +1,12 @@
 import HotelCard from '@/components/HotelCard';
 import HotelFilterSidebar from '@/components/HotelFilterSidebar';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
 async function getHotels(searchParams: any) {
     try {
         const params = new URLSearchParams(searchParams);
-        const res = await fetch(`http://localhost:5000/api/hotels?${params.toString()}`, { cache: 'no-store' });
+        const res = await fetch(`${API_URL}/hotels?${params.toString()}`, { cache: 'no-store' });
         if (!res.ok) {
             return [];
         }

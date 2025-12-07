@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ArrowLeft, Save, X, Upload } from 'lucide-react';
 import Link from 'next/link';
-import axios from 'axios';
+import api from '@/lib/api';
 
 export default function EditPackagePage() {
     const router = useRouter();
@@ -38,7 +38,7 @@ export default function EditPackagePage() {
 
     const fetchPackage = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/packages/${id}`);
+            const res = await api.get(`/packages/${id}`);
             const pkg = res.data;
             setFormData({
                 title: pkg.title,
@@ -119,7 +119,7 @@ export default function EditPackagePage() {
                 }
             }
 
-            await axios.put(`http://localhost:5000/api/packages/${id}`, data, {
+            await api.put(`/packages/${id}`, data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 

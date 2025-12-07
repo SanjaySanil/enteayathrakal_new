@@ -19,7 +19,8 @@ export default function MomentsPage() {
 
     const fetchMoments = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/moments');
+            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+            const res = await axios.get(`${baseUrl}/moments`);
             setMoments(res.data);
         } catch (error) {
             console.error(error);

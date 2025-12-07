@@ -19,7 +19,8 @@ export default function MomentsFeed() {
     useEffect(() => {
         async function fetchMoments() {
             try {
-                const res = await fetch('http://localhost:5000/api/moments');
+                const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+                const res = await fetch(`${baseUrl}/moments`);
                 if (res.ok) {
                     const data = await res.json();
                     setMoments(data.slice(0, 6)); // Show max 6 on homepage

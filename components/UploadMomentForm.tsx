@@ -35,7 +35,8 @@ export default function UploadMomentForm({ onSuccess }: { onSuccess: () => void 
         try {
             // Direct axios call because our api instance might default to JSON content-type
             // and browser handles multipart boundaries better automatically
-            await axios.post('http://localhost:5000/api/moments/upload', formData, {
+            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+            await axios.post(`${baseUrl}/moments/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

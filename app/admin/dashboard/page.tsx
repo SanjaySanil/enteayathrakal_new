@@ -26,9 +26,9 @@ export default function Dashboard() {
         try {
             // Fetch all data in parallel
             const [enqRes, pkgRes, hotelRes] = await Promise.all([
-                axios.get('http://localhost:5000/api/enquiries'),
-                axios.get('http://localhost:5000/api/packages'),
-                axios.get('http://localhost:5000/api/hotels')
+                api.get('/enquiries'),
+                api.get('/packages'),
+                api.get('/hotels')
             ]);
 
             setEnquiries(enqRes.data);
@@ -58,13 +58,13 @@ export default function Dashboard() {
 
         try {
             if (type === 'package') {
-                await axios.delete(`http://localhost:5000/api/packages/${id}`);
+                await api.delete(`/packages/${id}`);
                 setPackages(prev => prev.filter((p: any) => p.id !== id));
             } else if (type === 'hotel') {
-                await axios.delete(`http://localhost:5000/api/hotels/${id}`);
+                await api.delete(`/hotels/${id}`);
                 setHotels(prev => prev.filter((h: any) => h.id !== id));
             } else if (type === 'enquiry') {
-                await axios.delete(`http://localhost:5000/api/enquiries/${id}`);
+                await api.delete(`/enquiries/${id}`);
                 setEnquiries(prev => prev.filter((e: any) => e.id !== id));
             }
         } catch (error) {

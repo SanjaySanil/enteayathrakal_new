@@ -61,28 +61,6 @@ export default function AddPackagePage() {
             data.append('price', formData.price);
             data.append('duration_days', formData.duration_days);
             data.append('duration_nights', formData.duration_nights);
-            data.append('is_featured', String(formData.is_featured));
-            data.append('map_url', formData.map_url);
-
-            // Arrays as JSON strings
-            data.append('itinerary', JSON.stringify(formData.itinerary.split('\n').filter(line => line.trim())));
-            data.append('inclusions', JSON.stringify(formData.inclusions.split('\n').filter(line => line.trim())));
-            data.append('exclusions', JSON.stringify(formData.exclusions.split('\n').filter(line => line.trim())));
-
-            // Append files
-            if (images) {
-                for (let i = 0; i < images.length; i++) {
-                    data.append('images', images[i]);
-                }
-            }
-
-            await axios.post('http://localhost:5000/api/packages', data, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
-
-            alert('Package Created Successfully!');
-            router.push('/admin/dashboard');
-        } catch (error) {
             console.error('Failed to create package', error);
             alert('Failed to create package. Check console for details.');
         } finally {

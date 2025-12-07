@@ -5,15 +5,17 @@ import MomentsFeed from '@/components/MomentsFeed';
 import { ShieldCheck, Users, Map, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
 async function getFeaturedPackages() {
   try {
-    const res = await fetch('http://localhost:5000/api/packages', { cache: 'no-store' });
+    const res = await fetch(`${API_URL}/packages`, { cache: 'no-store' });
     if (!res.ok) {
       console.error("Failed to fetch packages");
       return [];
     }
     const packages = await res.json();
-    return packages.slice(0, 3); // Display first 3 as featured
+    return packages.filter((p: any) => p.is_featured).slice(0, 3); // Display first 3 as featured
   } catch (error) {
     console.error("Error fetching packages:", error);
     return [];
@@ -22,7 +24,7 @@ async function getFeaturedPackages() {
 
 async function getFeaturedHotels() {
   try {
-    const res = await fetch('http://localhost:5000/api/hotels', { cache: 'no-store' });
+    const res = await fetch(`${API_URL}/hotels`, { cache: 'no-store' });
     if (!res.ok) return [];
     const hotels = await res.json();
     return hotels.filter((h: any) => h.is_featured).slice(0, 3);

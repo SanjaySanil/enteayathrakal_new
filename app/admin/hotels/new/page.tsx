@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
-import axios from 'axios';
+import api from '@/lib/api';
 
 export default function AddHotelPage() {
     const router = useRouter();
@@ -72,7 +72,7 @@ export default function AddHotelPage() {
                 }
             }
 
-            await axios.post('http://localhost:5000/api/hotels', data, {
+            await api.post('/hotels', data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 

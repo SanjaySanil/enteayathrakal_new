@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ArrowLeft, Save, X, Upload } from 'lucide-react';
 import Link from 'next/link';
-import axios from 'axios';
+import api from '@/lib/api';
 
 export default function EditHotelPage() {
     const router = useRouter();
@@ -36,7 +36,7 @@ export default function EditHotelPage() {
 
     const fetchHotel = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/hotels/${id}`);
+            const res = await api.get(`/hotels/${id}`);
             const hotel = res.data;
             setFormData({
                 name: hotel.name,
@@ -114,7 +114,7 @@ export default function EditHotelPage() {
                 }
             }
 
-            await axios.put(`http://localhost:5000/api/hotels/${id}`, data, {
+            await api.put(`/hotels/${id}`, data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
