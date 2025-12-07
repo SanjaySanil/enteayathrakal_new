@@ -1,6 +1,7 @@
 'use client';
 
 import { Search } from 'lucide-react';
+import InstagramCarousel from './InstagramCarousel';
 
 export default function Hero() {
     return (
@@ -20,38 +21,10 @@ export default function Hero() {
                     Curated tour packages for your dream vocation.
                 </p>
 
-                {/* Search Bar */}
-                <div className="bg-white p-4 rounded-lg shadow-2xl max-w-4xl mx-auto flex flex-col md:flex-row gap-4 text-gray-800">
-                    <div className="flex-1">
-                        <label className="block text-xs font-bold text-gray-500 uppercase">Destination</label>
-                        <input
-                            type="text"
-                            placeholder="Where do you want to go?"
-                            className="w-full mt-1 border-b-2 border-transparent focus:border-teal-500 outline-none"
-                        />
-                    </div>
-                    <div className="w-px bg-gray-200 hidden md:block"></div>
-                    <div className="flex-1">
-                        <label className="block text-xs font-bold text-gray-500 uppercase">Date</label>
-                        <input
-                            type="date"
-                            className="w-full mt-1 border-b-2 border-transparent focus:border-teal-500 outline-none bg-transparent"
-                        />
-                    </div>
-                    <div className="w-px bg-gray-200 hidden md:block"></div>
-                    <div className="flex-1">
-                        <label className="block text-xs font-bold text-gray-500 uppercase">Guests</label>
-                        <input
-                            type="number"
-                            placeholder="2 Guests"
-                            className="w-full mt-1 border-b-2 border-transparent focus:border-teal-500 outline-none"
-                        />
-                    </div>
-                    <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-md font-bold hover:shadow-lg transform transition hover:-translate-y-1 flex items-center justify-center gap-2">
-                        SEARCH <Search size={20} />
-                    </button>
-                </div>
+                {/* Instagram Carousel */}
+                <InstagramCarousel />
             </div>
         </div>
     );
 }
+
