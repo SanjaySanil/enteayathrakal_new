@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
-import axios from 'axios';
+import api from '@/lib/api';
 
 export default function AddPackagePage() {
     const router = useRouter();
@@ -61,6 +61,25 @@ export default function AddPackagePage() {
             data.append('price', formData.price);
             data.append('duration_days', formData.duration_days);
             data.append('duration_nights', formData.duration_nights);
+            data.append('itinerary', formData.itinerary);
+            data.append('inclusions', formData.inclusions);
+            data.append('exclusions', formData.exclusions);
+            data.append('is_featured', String(formData.is_featured));
+            data.append('map_url', formData.map_url);
+
+            if (images) {
+                Array.from(images).forEach((image) => {
+                    data.append('images', image);
+                });
+            }
+
+            await api.post('/packages', data, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            alert('Package Created Successfully!');
+            router.push('/admin/dashboard');
+        } catch (error) {
             console.error('Failed to create package', error);
             alert('Failed to create package. Check console for details.');
         } finally {
