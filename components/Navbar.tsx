@@ -48,7 +48,7 @@ export default function Navbar() {
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-8">
                         {[
-                            { name: 'Destinations', href: '/' },
+                            { name: 'Destinations', href: '/#destinations' },
                             { name: 'Packages', href: '/packages' },
                             { name: 'Hotels', href: '/hotels' },
                             { name: 'Moments', href: '/moments' },
@@ -90,7 +90,7 @@ export default function Navbar() {
                 <div className="md:hidden absolute top-full left-0 w-full bg-white border-b shadow-xl animate-in slide-in-from-top-5 duration-300">
                     <div className="px-4 pt-2 pb-6 space-y-2">
                         {[
-                            { name: 'Destinations', href: '/' },
+                            { name: 'Destinations', href: '/#destinations' },
                             { name: 'Packages', href: '/packages' },
                             { name: 'Hotels', href: '/hotels' },
                             { name: 'Moments', href: '/moments' },

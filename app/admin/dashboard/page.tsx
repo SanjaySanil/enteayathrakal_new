@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
-import { LogOut, Package, MessageSquare, LayoutDashboard, Building, Trash2, Edit2 } from 'lucide-react';
+import { LogOut, Package, MessageSquare, LayoutDashboard, Building, Trash2, Edit2, MapPin, Image as ImageIcon } from 'lucide-react';
 import axios from 'axios';
 
 export default function Dashboard() {
@@ -97,6 +97,20 @@ export default function Dashboard() {
                     >
                         <Package size={20} />
                         <span>Moments</span>
+                    </button>
+                    <button
+                        onClick={() => router.push('/admin/places')}
+                        className="flex items-center space-x-3 w-full p-3 rounded transition hover:bg-teal-700/50"
+                    >
+                        <MapPin size={20} />
+                        <span>Places</span>
+                    </button>
+                    <button
+                        onClick={() => router.push('/admin/carousel')}
+                        className="flex items-center space-x-3 w-full p-3 rounded transition hover:bg-teal-700/50"
+                    >
+                        <ImageIcon size={20} />
+                        <span>Carousel</span>
                     </button>
                 </nav>
                 <button onClick={handleLogout} className="flex items-center space-x-3 w-full p-3 rounded mt-auto hover:bg-red-600/80 transition absolute bottom-6 w-52">

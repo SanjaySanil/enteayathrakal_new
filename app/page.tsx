@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import PackageCard from '@/components/PackageCard';
 import HotelCard from '@/components/HotelCard';
 import MomentsFeed from '@/components/MomentsFeed';
+import PlacesSection from '@/components/PlacesSection';
 import { ShieldCheck, Users, Map, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -42,38 +43,8 @@ export default async function Home() {
     <div className="bg-white">
       <Hero />
 
-      {/* Trust Badges */}
-      <section className="py-12 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-around items-center gap-8 text-center md:text-left">
-          <div className="flex items-center gap-4">
-            <div className="bg-teal-100 p-3 rounded-full text-teal-600">
-              <ShieldCheck size={32} />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-800">Trusted Agency</h4>
-              <p className="text-sm text-gray-500">Certified by Tourism Dept.</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="bg-teal-100 p-3 rounded-full text-teal-600">
-              <Users size={32} />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-800">1000+ Happy Travelers</h4>
-              <p className="text-sm text-gray-500">Across 20+ Countries</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="bg-teal-100 p-3 rounded-full text-teal-600">
-              <Map size={32} />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-800">Customized Plans</h4>
-              <p className="text-sm text-gray-500">Made just for you</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Explore by Category */}
+      <PlacesSection />
 
       {/* Featured Packages */}
       <section id="packages" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
