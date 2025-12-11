@@ -51,7 +51,7 @@ export default function About() {
                     </div>
                     <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group">
                         <img
-                            src="https://images.unsplash.com/photo-1527631746610-bca00104827d?w=800&q=80"
+                            src="/about-explore.jpg"
                             alt="Travel Community"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
