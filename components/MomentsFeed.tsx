@@ -46,7 +46,7 @@ export default function MomentsFeed() {
                     <p className="text-gray-600">Real stories, real memories.</p>
                 </div>
 
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div className="columns-1 md:columns-3 lg:columns-4 gap-4 space-y-4">
                     {moments.map((moment) => (
                         <div key={moment.id} className="break-inside-avoid bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
                             {moment.file_type === 'video' ? (
