@@ -23,7 +23,7 @@ export default function MomentsFeed() {
                 const res = await fetch(`${baseUrl}/moments`);
                 if (res.ok) {
                     const data = await res.json();
-                    setMoments(data.slice(0, 6)); // Show max 6 on homepage
+                    setMoments(data.slice(0, 8)); // Show max 8 on homepage
                 }
             } catch (error) {
                 console.error("Failed to fetch moments:", error);
@@ -46,9 +46,9 @@ export default function MomentsFeed() {
                     <p className="text-gray-600">Real stories, real memories.</p>
                 </div>
 
-                <div className="columns-1 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                <div className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory hide-scrollbar">
                     {moments.map((moment) => (
-                        <div key={moment.id} className="break-inside-avoid bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                        <div key={moment.id} className="min-w-[220px] md:min-w-[260px] lg:min-w-[300px] snap-center bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
                             {moment.file_type === 'video' ? (
                                 <video controls className="w-full h-auto">
                                     <source src={moment.file_url} type="video/mp4" />
@@ -57,11 +57,11 @@ export default function MomentsFeed() {
                                 <img
                                     src={moment.file_url}
                                     alt={moment.caption || 'Travel Moment'}
-                                    className="w-full h-auto object-cover"
+                                    className="w-full h-auto"
                                 />
                             )}
                             {moment.caption && (
-                                <div className="p-4 bg-white/95">
+                                <div className="p-4 bg-white/95 h-24 overflow-y-auto">
                                     <p className="text-gray-800 text-sm line-clamp-2">{moment.caption}</p>
                                     <p className="text-xs text-teal-600 font-bold mt-1">@{moment.user_name}</p>
                                 </div>
