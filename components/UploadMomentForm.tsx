@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
+import api from '@/lib/api';
 import { Upload, X } from 'lucide-react';
 
 export default function UploadMomentForm({ onSuccess }: { onSuccess: () => void }) {
@@ -33,10 +33,8 @@ export default function UploadMomentForm({ onSuccess }: { onSuccess: () => void 
         formData.append('file', file);
 
         try {
-            // Direct axios call because our api instance might default to JSON content-type
-            // and browser handles multipart boundaries better automatically
-            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-            await axios.post(`${baseUrl}/moments/upload`, formData, {
+            // Use api instance (handles base URL automatically)
+            await api.post('/moments/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
