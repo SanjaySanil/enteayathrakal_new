@@ -13,7 +13,7 @@ export default function Footer() {
                             alt="Logo"
                             className="w-12 h-12 rounded-full border-2 border-teal-500"
                         />
-                        <h3 className="text-2xl font-bold text-white">Entea Yathrakal</h3>
+                        <h3 className="text-2xl font-bold text-white">EnteaYathrakal</h3>
                     </div>
                     <div className="space-y-1 text-sm text-gray-400">
                         <p>Your Ultimate travel guide</p>
